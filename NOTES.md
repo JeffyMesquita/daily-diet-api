@@ -285,3 +285,49 @@ npm i supertest @types/supertest -D
 ```bash
 npm i npm-run-all -D
 ```
+
+## 37. Enter in `prisma` folder and run the following command
+
+```bash
+npm init -y
+```
+
+## 38. Erase `scripts` in prisma/package.json
+
+```json
+{
+  "name": "prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
+}
+```
+
+and create add in `main` `"main": "prisma-test-environment-ts",`
+
+```json
+{
+  "name": "prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "prisma-test-environment-ts",
+  "author": "",
+  "license": "ISC"
+}
+```
+
+## 39. In file `vitest.config.ts` add the following:
+
+```ts
+import { defineConfig } from "vitest/config";
+import tsconfigPaths from "vite-tsconfig-paths";
+
+export default defineConfig({
+  plugins: [tsconfigPaths()],
+  test: {
+    environmentMatchGlobs: [["src/http/controllers/**", "prisma"]],
+  },
+});
+```
