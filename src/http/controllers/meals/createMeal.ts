@@ -17,7 +17,7 @@ export async function createMeal(request: FastifyRequest, reply: FastifyReply) {
 
   const createMealUseCase = makeCreateMealUseCase();
 
-  await createMealUseCase.execute({
+  const { meal } = await createMealUseCase.execute({
     name,
     description,
     dateTime,
@@ -25,5 +25,7 @@ export async function createMeal(request: FastifyRequest, reply: FastifyReply) {
     userId,
   });
 
-  return reply.status(201).send();
+  return reply.status(201).send({
+    meal,
+  });
 }
