@@ -225,3 +225,63 @@ npx prisma migrate dev --name init
 ```bash
 npm i @fastify/cookies @fastify/jwt -D
 ```
+
+## 29. Install bcryptjs
+
+```bash
+npm i bcryptjs
+```
+
+## 30. Install types for bcryptjs
+
+```bash
+npm i --save-dev @types/bcryptjs
+```
+
+## 31. Install vitest for tests
+
+```bash
+npm i vitest vite-tsconfig-paths -D
+```
+
+## 32. Add this configs to file vite.config.ts
+
+```ts
+import { defineConfig } from "vitest/config";
+import tsconfigPaths from "vite-tsconfig-paths";
+
+export default defineConfig({
+  plugins: [tsconfigPaths()],
+});
+```
+
+## 33. Add this configs to file package.json
+
+```json
+{
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
+  }
+}
+```
+
+## 34. Install @vitest/ui
+
+```bash
+npm i @vitest/ui -D
+```
+
+## 35. Install supertest and your types
+
+```bash
+npm i supertest @types/supertest -D
+```
+
+## 36. Install npm run all
+
+```bash
+npm i npm-run-all -D
+```
