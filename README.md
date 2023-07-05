@@ -9,7 +9,7 @@
 - [x] Exclusão de refeições
 - [x] Listagem de todas as refeições de um usuário
 - [x] Visualização de uma única refeição
-- [ ] Recuperação de métricas do usuário, incluindo quantidade total de refeições registradas, quantidade total de refeições dentro da dieta, quantidade total de refeições fora da dieta e melhor sequência de refeições dentro da dieta
+- [x] Recuperação de métricas do usuário, incluindo quantidade total de refeições registradas, quantidade total de refeições dentro da dieta, quantidade total de refeições fora da dieta e melhor sequência de refeições dentro da dieta
 
 ## Regras de Negócio
 

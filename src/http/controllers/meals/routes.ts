@@ -5,6 +5,7 @@ import { updateMeal } from "./update-meal";
 import { deleteMeal } from "./delete-meal";
 import { getMeals } from "./get-meals";
 import { fetchMeal } from "./fetch-meal";
+import { metrics } from "./get-meals-metrics";
 
 export async function mealsRoutes(app: FastifyInstance) {
   app.post(
@@ -45,5 +46,13 @@ export async function mealsRoutes(app: FastifyInstance) {
       onRequest: [verifyJWT],
     },
     fetchMeal
+  );
+
+  app.get(
+    "/meals/metrics",
+    {
+      onRequest: [verifyJWT],
+    },
+    metrics
   );
 }

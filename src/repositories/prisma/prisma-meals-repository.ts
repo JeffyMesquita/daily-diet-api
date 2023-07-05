@@ -55,6 +55,9 @@ export class PrismaMealsRepository implements MealsRepository {
       where: {
         userId,
       },
+      orderBy: {
+        dateTime: "desc",
+      },
     });
 
     return meals;
