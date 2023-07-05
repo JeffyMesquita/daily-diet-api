@@ -11,6 +11,22 @@ export class PrismaMealsRepository implements MealsRepository {
     return meal;
   }
 
+  async update(id: string, data: Partial<Meal>): Promise<Meal> {
+    const meal = await prisma.meal.update({
+      where: {
+        id,
+      },
+      data: {
+        name: data.name,
+        description: data.description,
+        dateTime: data.dateTime,
+        withinDiet: data.withinDiet,
+      },
+    });
+
+    return meal;
+  }
+
   async findAllByUserId(userId: string): Promise<Meal[]> {
     const meals = await prisma.meal.findMany({
       where: {

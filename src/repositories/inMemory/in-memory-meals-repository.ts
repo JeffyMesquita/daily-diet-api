@@ -20,6 +20,29 @@ export class InMemoryMealsRepository implements MealsRepository {
     return meal;
   }
 
+  async update(id: string, data: Partial<Meal>) {
+    const mealIndex = this.meals.findIndex((meal) => meal.id === id);
+
+    console.log(data);
+
+    const meal = this.meals[mealIndex];
+
+    if (!meal) {
+      throw new Error("Meal not found");
+    }
+
+    meal.name = data.name || meal.name;
+    meal.dateTime = data.dateTime || meal.dateTime;
+    meal.withinDiet = data.withinDiet ? data.withinDiet : meal.withinDiet;
+    meal.description = data.description || meal.description;
+
+    console.log(meal);
+
+    this.meals[mealIndex] = meal;
+
+    return meal;
+  }
+
   async findAllByUserId(userId: string): Promise<Meal[]> {
     const meals = this.meals.filter((meal) => meal.userId === userId);
 
