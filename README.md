@@ -7,8 +7,8 @@
 - [x] Registro de refeições com nome, descrição, data e hora, e indicação se está dentro ou não da dieta
 - [x] Edição de refeições
 - [x] Exclusão de refeições
-- [ ] Listagem de todas as refeições de um usuário
-- [ ] Visualização de uma única refeição
+- [x] Listagem de todas as refeições de um usuário
+- [x] Visualização de uma única refeição
 - [ ] Recuperação de métricas do usuário, incluindo quantidade total de refeições registradas, quantidade total de refeições dentro da dieta, quantidade total de refeições fora da dieta e melhor sequência de refeições dentro da dieta
 
 ## Regras de Negócio

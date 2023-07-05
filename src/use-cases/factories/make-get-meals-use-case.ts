@@ -1,6 +1,5 @@
 import { PrismaMealsRepository } from "@/repositories/prisma/prisma-meals-repository";
 import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository";
-
 import { GetMealsUseCase } from "../get-meals";
 
 export function makeGetMealsUseCase() {
