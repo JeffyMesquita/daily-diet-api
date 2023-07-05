@@ -23,8 +23,6 @@ export class InMemoryMealsRepository implements MealsRepository {
   async update(id: string, data: Partial<Meal>) {
     const mealIndex = this.meals.findIndex((meal) => meal.id === id);
 
-    console.log(data);
-
     const meal = this.meals[mealIndex];
 
     if (!meal) {
@@ -36,17 +34,27 @@ export class InMemoryMealsRepository implements MealsRepository {
     meal.withinDiet = data.withinDiet ? data.withinDiet : meal.withinDiet;
     meal.description = data.description || meal.description;
 
-    console.log(meal);
-
     this.meals[mealIndex] = meal;
 
     return meal;
   }
 
+  async delete(id: string): Promise<Meal | null> {
+    const mealIndex = this.meals.findIndex((meal) => meal.id === id);
+
+    if (mealIndex === -1) {
+      throw new Error("Meal not found");
+    }
+
+    const meal = this.meals.splice(mealIndex, 1);
+
+    return meal[0] || null;
+  }
+
   async findAllByUserId(userId: string): Promise<Meal[]> {
     const meals = this.meals.filter((meal) => meal.userId === userId);
 
-    return meals;
+    return meals || [];
   }
 
   async findUnique(id: string): Promise<Meal | null> {

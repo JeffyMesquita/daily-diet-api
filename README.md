@@ -2,21 +2,21 @@
 
 ## Requisitos Funcionais
 
-- [ ] Criação de usuário
-- [ ] Autenticação de usuário
-- [ ] Registro de refeições com nome, descrição, data e hora, e indicação se está dentro ou não da dieta
-- [ ] Edição de refeições
-- [ ] Exclusão de refeições
+- [x] Criação de usuário
+- [x] Autenticação de usuário
+- [x] Registro de refeições com nome, descrição, data e hora, e indicação se está dentro ou não da dieta
+- [x] Edição de refeições
+- [x] Exclusão de refeições
 - [ ] Listagem de todas as refeições de um usuário
 - [ ] Visualização de uma única refeição
 - [ ] Recuperação de métricas do usuário, incluindo quantidade total de refeições registradas, quantidade total de refeições dentro da dieta, quantidade total de refeições fora da dieta e melhor sequência de refeições dentro da dieta
 
 ## Regras de Negócio
 
-- [ ] As refeições devem ser relacionadas a um usuário
-- [ ] O usuário só pode visualizar, editar e apagar as refeições que ele criou
+- [x] As refeições devem ser relacionadas a um usuário
+- [x] O usuário só pode visualizar, editar e apagar as refeições que ele criou
 
 ## Requisitos Não Funcionais
 
-- [ ] Utilização de banco de dados para armazenamento das informações do usuário e das refeições
-- [ ] Utilização de autenticação por token para identificar o usuário entre as requisições
+- [x] Utilização de banco de dados para armazenamento das informações do usuário e das refeições
+- [x] Utilização de autenticação por token para identificar o usuário entre as requisições
