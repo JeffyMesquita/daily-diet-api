@@ -11,18 +11,14 @@ describe("Delete Meal Use Case", () => {
     mealsRepository = new InMemoryMealsRepository();
     sut = new DeleteMealUseCase(mealsRepository);
   });
+  const userId = "user-id";
 
   it("should be able to delete a meal", async () => {
-    const { id } = await mealsRepository.create({
+    const { id } = await mealsRepository.create(userId, {
       name: "Breakfast",
       description: "Bread and butter",
       dateTime: new Date("2021-09-22T12:00:00.000Z"),
       withinDiet: false,
-      user: {
-        connect: {
-          id: "user-id",
-        },
-      },
     });
 
     const { meal } = await sut.execute({
@@ -33,16 +29,11 @@ describe("Delete Meal Use Case", () => {
   });
 
   it("should not be able to delete a non-existing meal", async () => {
-    await mealsRepository.create({
+    await mealsRepository.create(userId, {
       name: "Breakfast",
       description: "Bread and butter",
       dateTime: new Date("2021-09-22T12:00:00.000Z"),
       withinDiet: false,
-      user: {
-        connect: {
-          id: "user-id",
-        },
-      },
     });
 
     await expect(() =>
@@ -53,16 +44,11 @@ describe("Delete Meal Use Case", () => {
   });
 
   it("should be able to delete a meal and have a success message", async () => {
-    const { id } = await mealsRepository.create({
+    const { id } = await mealsRepository.create(userId, {
       name: "Breakfast",
       description: "Bread and butter",
       dateTime: new Date("2021-09-22T12:00:00.000Z"),
       withinDiet: false,
-      user: {
-        connect: {
-          id: "user-id",
-        },
-      },
     });
 
     const result = await sut.execute({

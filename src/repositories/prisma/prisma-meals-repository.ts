@@ -3,9 +3,18 @@ import { Prisma, Meal } from "@prisma/client";
 import { MealsRepository } from "../meals-repository";
 
 export class PrismaMealsRepository implements MealsRepository {
-  async create(data: Prisma.MealCreateInput): Promise<Meal> {
+  async create(
+    userId: string,
+    data: Omit<Prisma.MealCreateInput, "user">
+  ): Promise<Meal> {
     const meal = await prisma.meal.create({
-      data,
+      data: {
+        name: data.name,
+        dateTime: new Date(data.dateTime),
+        userId,
+        withinDiet: data.withinDiet,
+        description: data.description,
+      },
     });
 
     return meal;

@@ -12,16 +12,13 @@ describe("Update Meal Use Case", () => {
   });
 
   it("should be able to update a meal", async () => {
-    const { id, withinDiet } = await mealsRepository.create({
+    const userId = "user-id";
+
+    const { id, withinDiet } = await mealsRepository.create(userId, {
       name: "Breakfast",
       description: "Bread and butter",
       dateTime: new Date("2021-09-22T12:00:00.000Z"),
       withinDiet: false,
-      user: {
-        connect: {
-          id: "user-id",
-        },
-      },
     });
 
     const { meal } = await sut.execute({

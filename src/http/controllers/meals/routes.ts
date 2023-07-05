@@ -3,6 +3,7 @@ import { verifyJWT } from "../../middlewares/verifyJwt";
 import { createMeal } from "./create-meal";
 import { updateMeal } from "./update-meal";
 import { deleteMeal } from "./delete-meal";
+import { getMeals } from "./get-meals";
 
 export async function mealsRoutes(app: FastifyInstance) {
   app.post(
@@ -27,5 +28,13 @@ export async function mealsRoutes(app: FastifyInstance) {
       onRequest: [verifyJWT],
     },
     deleteMeal
+  );
+
+  app.get(
+    "/meals",
+    {
+      onRequest: [verifyJWT],
+    },
+    getMeals
   );
 }

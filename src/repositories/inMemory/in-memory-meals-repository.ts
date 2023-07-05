@@ -5,19 +5,19 @@ import { MealsRepository } from "../meals-repository";
 export class InMemoryMealsRepository implements MealsRepository {
   private meals: Meal[] = [];
 
-  async create(data: Prisma.MealCreateInput) {
-    const meal: Meal = {
+  async create(userId: string, meal: Omit<Prisma.MealCreateInput, "user">) {
+    const createdMeal: Meal = {
       id: randomUUID(),
-      name: data.name,
-      dateTime: new Date(data.dateTime),
-      userId: randomUUID(),
-      withinDiet: data.withinDiet,
-      description: data.description,
+      name: meal.name,
+      dateTime: new Date(meal.dateTime),
+      userId,
+      withinDiet: meal.withinDiet,
+      description: meal.description,
     };
 
-    this.meals.push(meal);
+    this.meals.push(createdMeal);
 
-    return meal;
+    return createdMeal;
   }
 
   async update(id: string, data: Partial<Meal>) {
@@ -54,7 +54,11 @@ export class InMemoryMealsRepository implements MealsRepository {
   async findAllByUserId(userId: string): Promise<Meal[]> {
     const meals = this.meals.filter((meal) => meal.userId === userId);
 
-    return meals || [];
+    if (!meals) {
+      return [];
+    }
+
+    return meals;
   }
 
   async findUnique(id: string): Promise<Meal | null> {

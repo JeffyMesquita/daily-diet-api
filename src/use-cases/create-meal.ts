@@ -34,16 +34,11 @@ export class CreateMealUseCase {
       throw new UserNotFoundError();
     }
 
-    const meal = await this.mealsRepository.create({
+    const meal = await this.mealsRepository.create(user.id, {
       name,
       description,
-      dateTime,
+      dateTime: new Date(dateTime),
       withinDiet,
-      user: {
-        connect: {
-          id: user.id || userId,
-        },
-      },
     });
 
     return { meal };
